@@ -17,10 +17,9 @@ public class Employee {
 
     private String empName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "emp-proj",
             joinColumns = @JoinColumn(name = "emp_Id"),
-            inverseJoinColumns= @JoinColumn(name = "project_Id")
-    )
+            inverseJoinColumns= @JoinColumn(name = "project_Id"))
     private Set<Project> assignproject = new HashSet<>();
 }

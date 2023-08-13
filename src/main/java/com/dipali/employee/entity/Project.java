@@ -2,6 +2,7 @@ package com.dipali.employee.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.repository.cdi.Eager;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +16,6 @@ public class Project {
     private Long proId;
 
     private String proName;
-    @ManyToMany(mappedBy = "assignproject")
+    @ManyToMany(mappedBy = "assignproject",cascade = CascadeType.ALL)
     private Set<Employee> emp=new HashSet<>();
 }

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -24,7 +26,8 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllemp(){
-        return this.employeeRepository.findAll();
+        List<Employee> employees = this.employeeRepository.findAll();
+            return employees;
 
     }
 public Employee assignproject(Long empId,Long proId){
@@ -33,7 +36,7 @@ public Employee assignproject(Long empId,Long proId){
     Project project = this.projectRepository.findById(proId).get();
     set= employee.getAssignproject();
     set.add(project);
-employee.setassignproject(set);
+    employee.setAssignproject(set);
    return this.employeeRepository.save(employee);
 }
 
